@@ -12,6 +12,10 @@ public class DestroyByContact : MonoBehaviour
 		Destroy(other.gameObject);
 		Destroy(gameObject);
 		Instantiate(AsteroidExplosion, transform.position, transform.rotation);
-		Instantiate(PlayerExplosion, other.transform.position, other.transform.rotation);
+
+		if (other.CompareTag("Player"))
+		{
+			Instantiate(PlayerExplosion, other.transform.position, other.transform.rotation);
+		}
 	}
 }
