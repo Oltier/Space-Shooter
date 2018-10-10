@@ -9,6 +9,7 @@ public class Boundary
 public class MyPlayerController : MonoBehaviour
 {
     public float Speed;
+    public float Tilt;
     public Boundary Boundary;
 
     private void FixedUpdate()
@@ -26,5 +27,7 @@ public class MyPlayerController : MonoBehaviour
             0.0f,
             Mathf.Clamp(rb.position.z, Boundary.ZMin, Boundary.ZMax)
         );
+        
+        rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x * -Tilt);
     }
 }
